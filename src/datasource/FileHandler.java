@@ -23,6 +23,8 @@ public class FileHandler {
             //Vi indsætter vores fil i vores scanner. Filen ligger i resources/coviddata.csv. File.seperator'
             //Er blot / der viser filstien. Denne bruges fordi File.separator ændre sig ud fra computerens OS.
             //Dette er nødvendigt fordi Windows bruger '/' og MacOS bruger '\'.
+            //StandardCharset sættes, da det CharSet Java benytter pr. default er UTF-8, som ikke understøtter æ,ø,å.
+            //Dog understøtter ISO_8859_1 æ,ø,å, og derfor sættes denne i scanneren.
             fileReader = new Scanner(new File("resources"+File.separator+"coviddata.csv"), StandardCharsets.ISO_8859_1);
         } catch(IOException ioE) {
             //Throw RuntimeException så vi stadig får vores Exception vist ved fejl, men den fortsat gider at compile.
